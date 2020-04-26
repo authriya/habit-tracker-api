@@ -31,7 +31,7 @@ daysRouter
         fields.forEach(field => {
             fieldsToInsert.push(req.body[field - 1])
         })
-        if(!fieldsToInsert) {
+        if(req.body.length < 7) {
             return res.status(400).json({
                 error: {message: `Missing new days table`}
             })

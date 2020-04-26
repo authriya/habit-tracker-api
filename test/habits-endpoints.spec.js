@@ -152,7 +152,7 @@ describe('Habits Endpoints', function() {
         })
     })
     describe(`PATCH /api/habits/:habitId`, () => {
-        context(`Given no artciles`, () => {
+        context(`Given no habits`, () => {
             it(`responds with 404`, () => {
                 const habitId = 12345
                 return supertest(app)
