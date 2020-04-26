@@ -5,6 +5,7 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV, CLIENT_ORIGIN } = require('./config')
 const habitsRouter = require('./Habits/habits-router')
+const daysRouter = require('./Days/days-router')
 
 const app = express()
 
@@ -19,6 +20,7 @@ app.use(cors({
 app.use(helmet())
 
 app.use('/api/habits', habitsRouter)
+app.use('/api/days', daysRouter)
 
 app.get('/', (req, res) => {
     res.send('Hello, world!')
