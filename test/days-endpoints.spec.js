@@ -4,7 +4,7 @@ const knex = require('knex')
 const app = require('../src/app')
 const {makeDaysArray, makeNewDaysArray} = require('./days.fixtures')
 
-describe('Days Endpoints', function() {
+describe.only('Days Endpoints', function() {
     let db 
 
     before('make knex instance', () => {
@@ -67,20 +67,26 @@ describe('Days Endpoints', function() {
             })
         })
     })
-    describe('POST /api/days', () => {
-        context('given a table', () => {
-            it(`creates a new table, responding with 201 and the new table`, () => {
-                const newDays = makeNewDaysArray();
-    
+    describe('PATCH /api/days', () => {
+        context('Given there are days', () => {
+            const testDays = makeDaysArray();
+            const newDays = makeNewDaysArray();
+
+            beforeEach('insert days', () => {
+                return db
+                    .into('days')
+                    .insert(testDays)
+            })
+            it('responds with 204 and updates the days', () => {
                 return supertest(app)
-                    .post('/api/days')
+                    .patch(`/api/days`)
                     .send(newDays)
-                    .expect(201)
-                    .then(res => 
+                    .expect(204)
+                    .then(res => {
                         supertest(app)
-                            .get(`/api/days`)
-                            .expect(200, newDays)
-                        )
+                            .get('/api/days')
+                            .expect(newDays)
+                    })
             })
         })
     })

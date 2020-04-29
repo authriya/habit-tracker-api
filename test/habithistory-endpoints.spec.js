@@ -5,7 +5,7 @@ const app = require('../src/app')
 const {makeHabitHistoryArray, makeNewHabitHistory} = require('./habithistory.fixtures')
 const {makeHabitsArray} = require('./habits.fixtures')
 
-describe.only('Habit History Endpoints', function() {
+describe('Habit History Endpoints', function() {
     let db
 
     before('make knex instance', () => {
