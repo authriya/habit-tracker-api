@@ -53,12 +53,7 @@ habitHistoryRouter
         for(let i = 0; i < length; i++) {
             fieldsToUpdate.push(req.body[i])
         }
-
-        if(fieldsToUpdate.length === 0) {
-            return res.status(400).json({
-                error: {message: `Missing new table`}
-            })
-        }
+        
         fieldsToUpdate.forEach(field => {
             HabitHistoryService.updateHistory(
                 req.app.get('db'),

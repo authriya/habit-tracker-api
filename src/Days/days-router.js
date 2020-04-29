@@ -25,27 +25,32 @@ daysRouter
                 res.status(204).end()
             })
     })
-    .post(jsonParser, (req, res, next) => {
-        const fields = [1, 2, 3, 4, 5, 6, 7]
-        const fieldsToInsert = []
-        fields.forEach(field => {
-            fieldsToInsert.push(req.body[field - 1])
-        })
-        if(req.body.length < 7) {
+    .patch(jsonParser, (req, res, next) => {
+        const length = req.body.length
+        const fieldsToUpdate = []
+
+        for(let i = 0; i < length; i++) {
+            fieldsToUpdate.push(req.body[i])
+        }
+
+        if(fieldsToUpdate.length === 0) {
             return res.status(400).json({
-                error: {message: `Missing new days table`}
+                error: {message: `Missing new days`}
             })
         }
-        DaysService.insertDays(
-            req.app.get('db'),
-            fieldsToInsert
-        )
-            .then(days => {
+
+        fieldsToUpdate.forEach(field => {
+            DaysService.updateDays(
+                req.app.get('db'),
+                field.id,
+                field
+            )
+            .then(history => {
                 res
-                    .status(201)
-                    .json(days)
+                    .status(204).end()
             })
             .catch(next)
+        })
     })
 
     module.exports = daysRouter

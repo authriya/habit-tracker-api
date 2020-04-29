@@ -6,14 +6,10 @@ const DaysService = {
         return knex('days')
             .delete()
     },
-    insertDays(knex, newDays) {
-        return knex
-            .insert(newDays)
-            .into('days')
-            .returning('*')
-            .then(rows => {
-                return rows[0]
-            })
+    updateDays(knex, id, newDay) {
+        return knex('days')
+            .where({id})
+            .update(newDay)
     }
 }
 
