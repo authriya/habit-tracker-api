@@ -4,7 +4,7 @@ const knex = require('knex')
 const app = require('../src/app')
 const {makeDaysArray, makeNewDaysArray} = require('./days.fixtures')
 
-describe.only('Days Endpoints', function() {
+describe('Days Endpoints', function() {
     let db 
 
     before('make knex instance', () => {

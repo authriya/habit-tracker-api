@@ -1,26 +1,87 @@
-# Express Boilerplate!
+![logo screenshot](./screenshots/Logo.png "Logo")
+================
 
-This is a boilerplate project used for starting new projects!
+Link to Live Website
+--------------------
+https://habit-tracker-app.now.sh/
 
-## How do set up?
+About the App
+-------------
+## An app that confirms that you are, in fact, still adulting
+This quarantine's pretty stressful, to say the least. It's hard to maintain some semblance of normalcy while still being gentle with yourself, and to strike that balance between being productive and not putting too much pressure on yourself as you're coping with an unprecedented world event.
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+I created the Habit Tracker with this balance in mind– I wanted to create an app that lets you set tasks that you ideally want to do every day– but doesn't pressure you to do them at any particular time. Here's how it works– add a task (or two, or three), and everyday that you perform that task, log it in the tracker. You can view your progress and see how you did over the course of a week. Didn't do so hot? That's ok, with every new week, you get a fresh new slate to do better! The timespan of a week to track your habits is the ideal middle ground between taking it one day at a time, and giving yourself a flexible routine.
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+## Instructions
+Start off by adding a habit on the Add Habit tab.
 
-## Scripts
+![/add-habit screenshot](./screenshots/Add-Habit.png "Add Habit")
 
-Start the application `npm start`
+Log your progress everyday under the Log Day tab. 
 
-Start nodemon for the application `npm run dev`
+![/log-day screenshot](./screenshots/Log-Day.png "Log Day")
 
-Run the tests in watch mode `npm test`
+See a graph of your habits' progress in the Progress tab. 
 
-## Deploying
+![/progress screenshot](./screenshots/Progress.png "Progress")
 
-When your new project is ready for deployment, add a new heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+To see a summary of the habits you're tracking, what day you're on in the week, or to refresh to a new week go to the Overview tab.
+
+![/overview screenshot](./screenshots/Overview.png "Overview")
+
+Have fun tracking, and stay healthy, safe, and happy!
+
+API Documentation
+-----------------
+## Habits
+
+GET '/api/habits' - Gets all habits
+
+POST '/api/habits' - Posts new habit
+
+DELETE '/api/habits' - Deletes all habits
+
+GET '/api/habits/:habitId' - Gets a habit by ID
+
+PATCH '/api/habits/:habitId' - Updates habits by ID
+
+## Habit History
+
+GET '/api/habithistory' - Gets all history
+
+POST '/api/habithistory' - Posts new history for a habit
+
+DELETE '/api/habithistory' - Deletes all history
+
+PATCH '/api/habithistory' - Updates entire habit history table with a new table
+
+GET '/api/habithistory/:habitId' - Gets a habits history by the habit ID
+
+## Days
+
+GET '/api/days' - Gets all days
+
+DELETE '/api/days' - Deletes all days
+
+PATCH '/api/days' - Updates entire days table
+
+## Errors
+The API uses conventional HTTP response codes for error signalling. Common error codes are as follows:
+
+200- OK 
+
+400- Bad request, often due to missing parameter
+
+401- Unauthorized, no valid API key. Log back in with credentials or sign up for an account if you don't have one.
+
+403- Forbidden, your API key doesn't have the credentials to perform this request
+
+404- Not found, bad endpoint. Check for typos.
+
+500, 502, 503, 504 - Server Errors	Something went wrong on the API's end.
+
+Tech Used
+---------
+Client: ReactJS, React Router, JSX, Javascript, JSON, HTML, CSS
+
+API: Javascript, Node, Express, RESTful APIs, Helmet, XSS, Morgan, Postgres, PSQL, DBeaver, CORS, knex, Chai 

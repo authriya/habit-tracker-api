@@ -1,6 +1,5 @@
 const path = require('path')
 const express = require('express')
-const xss = require('xss')
 const HabitHistoryService = require('./habithistory-service')
 
 const habitHistoryRouter = express.Router()
