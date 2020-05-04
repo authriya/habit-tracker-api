@@ -1,9 +1,9 @@
-const path = require('path')
-const express = require('express')
-const HabitHistoryService = require('./habithistory-service')
+const path = require('path');
+const express = require('express');
+const HabitHistoryService = require('./habithistory-service');
 
-const habitHistoryRouter = express.Router()
-const jsonParser = express.json()
+const habitHistoryRouter = express.Router();
+const jsonParser = express.json();
 
 
 habitHistoryRouter

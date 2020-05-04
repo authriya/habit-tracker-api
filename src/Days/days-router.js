@@ -1,10 +1,10 @@
-const path = require('path')
-const express = require('express')
-const xss = require('xss')
-const DaysService = require('./days-service')
+const path = require('path');
+const express = require('express');
+const xss = require('xss');
+const DaysService = require('./days-service');
 
-const daysRouter = express.Router()
-const jsonParser = express.json()
+const daysRouter = express.Router();
+const jsonParser = express.json();
 
 daysRouter
     .route('/')

@@ -1,10 +1,10 @@
-const path = require('path')
-const express = require('express')
-const xss = require('xss')
-const HabitsService = require('./habits-service')
+const path = require('path');
+const express = require('express');
+const xss = require('xss');
+const HabitsService = require('./habits-service');
 
-const habitsRouter = express.Router()
-const jsonParser = express.json()
+const habitsRouter = express.Router();
+const jsonParser = express.json();
 
 const serializeHabit = habit => ({
     id: habit.id,
